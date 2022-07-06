@@ -1,7 +1,10 @@
-node_modules
-build
-coverage
-.vscode
-.DS_STORE
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
 .env
-tmp
+yarn.lock
+yarn-error.log
+package-lock.json
