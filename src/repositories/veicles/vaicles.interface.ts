@@ -1,15 +1,15 @@
 import { DeleteResult } from "typeorm";
 
 interface Iveicles {
-  id: string;
-  name: string;
-  description: string;
-  plate: string;
-  isFavorite: boolean;
-  year: number;
-  color: string;
-  price: number;
-  createdAt: Date;
+  id?: string;
+  name?: string;
+  description?: string;
+  plate?: string;
+  isFavorite?: boolean;
+  year?: number;
+  color?: string;
+  price?: number;
+  createdAt?: Date;
 }
 
 interface IveiclesRepo {

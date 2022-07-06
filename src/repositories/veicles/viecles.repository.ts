@@ -9,8 +9,7 @@ class veicleRepoitory implements IveiclesRepo {
     this.ormrepository = getRepository(veicleTable);
   }
 
-  saveVeicle = async (veicle: Iveicles) =>
-    await this.ormrepository.save(veicle);
+  saveVeicle = async (veicle) => await this.ormrepository.save(veicle);
 
   getOneVeiclePlate = async (plate: string) =>
     await this.ormrepository.findOne({ plate: plate });
@@ -21,21 +20,25 @@ class veicleRepoitory implements IveiclesRepo {
   getallVeicle = async () => await this.ormrepository.find();
 
   updateVeicle = async (
-    veicleInitStatus: string,
+    veicleInitStatus: any,
+    name: string,
+    description: string,
     plate: string,
-    chassis: string,
-    renavam: number,
-    model: string,
-    brand: string,
-    year: string
+    isFavorite: boolean,
+    year: string,
+    color: string,
+    price: number,
+    createdAt: string
   ) =>
     await this.ormrepository.update(veicleInitStatus, {
+      name: name,
+      description: description,
       plate: plate,
-      chassis: chassis,
-      renavam: renavam,
-      model: model,
-      brand: brand,
+      isFavorite: isFavorite,
       year: year,
+      color: color,
+      price: price,
+      createdAt: createdAt,
     });
 
   deleteVeicle = async (id: string) =>
