@@ -17,7 +17,7 @@ const schema = yup.object().shape({
 
   price: yup.number().required(),
 
-  createdAt: yup.date().required(),
+  createdAt: yup.string().required(),
 });
 
 export default schema;

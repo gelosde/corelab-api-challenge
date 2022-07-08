@@ -19,24 +19,25 @@ describe("tests for routes off veicle tratament", () => {
     await connection.create();
   });
 
-  afterAll(async () => {
-    await connection.close();
-  });
-
   beforeEach(async () => {
     await connection.clear();
+  });
+  afterAll(async () => {
+    await connection.close();
   });
   it("this test is to save a new veicle info", async () => {
     const saveNewVeicle = await request(app)
       .post("/veicle/register")
       .send(veicleTest);
-
+    seecar = saveNewVeicle.body.veicle;
+    console.log(seecar);
     expect(saveNewVeicle.status).toBe(201);
   });
+});
 
-  it("this test is to get all veicles info", async () => {
+/** it("this test is to get all veicles info", async () => {
     const getAllVeicles = await request(app).get("/veicle/list");
-    seecar = getAllVeicles.body.find((car) => car.plate === "AB3e33");
+
     expect(getAllVeicles.status).toBe(200);
   });
 
@@ -49,7 +50,7 @@ describe("tests for routes off veicle tratament", () => {
   it("this test is to update veicle info", async () => {
     const getOneVeicle = await request(app)
       .patch(`/veicle/update/:${seecar.id}`)
-      .send({ price: 333333333 });
+      .send({ price: 333333333.07 });
 
     expect(getOneVeicle.status).toBe(200);
   });
@@ -70,5 +71,4 @@ describe("tests for routes off veicle tratament", () => {
     const deleteArquive = await request(app).delete(`/veicle/:${seecar.id}`);
 
     expect(deleteArquive.status).toBe(200);
-  });
-});
+  }); */

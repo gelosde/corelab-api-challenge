@@ -1,4 +1,4 @@
-const veicleTest: any = {
+const veicleTest = {
   name: "impala",
   description: "One good car",
   plate: "AB3e33",

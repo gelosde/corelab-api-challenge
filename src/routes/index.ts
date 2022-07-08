@@ -14,7 +14,7 @@ router.delete("/veicle/:toDelete", actionVeicles.deleteVeicle);
 
 router.delete("/veicle/arquive/:id", actionVeicles.deletArquive);
 
-router.get("/veicle/see/:finder", actionVeicles.getOneVeicle);
+router.get("veicle/see/:finder", actionVeicles.getOneVeicle);
 
 router.get("/veicle/list", actionVeicles.listAllVeicles);
 
