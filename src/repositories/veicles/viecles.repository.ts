@@ -1,6 +1,6 @@
 import { getRepository, Repository } from "typeorm";
 import { veicleTable } from "../../entities/veicles";
-import { Iveicles, IveiclesRepo } from "./vaicles.interface";
+import { IveiclesRepo } from "./vaicles.interface";
 
 class veicleRepoitory implements IveiclesRepo {
   private ormrepository: Repository<veicleTable>;
@@ -9,7 +9,7 @@ class veicleRepoitory implements IveiclesRepo {
     this.ormrepository = getRepository(veicleTable);
   }
 
-  saveVeicle = async (veicle) => await this.ormrepository.save(veicle);
+  saveVeicle = async (veicle: any) => await this.ormrepository.save(veicle);
 
   getOneVeiclePlate = async (plate: string) =>
     await this.ormrepository.findOne({ plate: plate });
@@ -19,26 +19,16 @@ class veicleRepoitory implements IveiclesRepo {
 
   getallVeicle = async () => await this.ormrepository.find();
 
-  updateVeicle = async (
-    veicleInitStatus: any,
-    name: string,
-    description: string,
-    plate: string,
-    isFavorite: boolean,
-    year: string,
-    color: string,
-    price: number,
-    createdAt: string
-  ) =>
+  updateVeicle = async (veicleInitStatus: any, modificated: any) =>
     await this.ormrepository.update(veicleInitStatus, {
-      name: name,
-      description: description,
-      plate: plate,
-      isFavorite: isFavorite,
-      year: year,
-      color: color,
-      price: price,
-      createdAt: createdAt,
+      name: modificated.name,
+      description: modificated.description,
+      plate: modificated.plate,
+      isFavorite: modificated.isFavorite,
+      year: modificated.year,
+      color: modificated.color,
+      price: modificated.price,
+      createdAt: modificated.createdAt,
     });
 
   deleteVeicle = async (id: string) =>

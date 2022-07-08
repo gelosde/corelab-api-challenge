@@ -1,9 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { v4 as uuid } from "uuid";
 
 @Entity()
 export class veicleTable {
   @PrimaryGeneratedColumn("uuid")
-  id: string;
+  readonly id: string;
 
   @Column()
   name: string;
@@ -28,4 +29,9 @@ export class veicleTable {
 
   @Column({ type: "date" })
   createdAt: string;
+  constructor() {
+    if (!this.id) {
+      this.id = uuid();
+    }
+  }
 }
