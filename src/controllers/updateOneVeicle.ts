@@ -26,6 +26,7 @@ const updateVeicle = async (req: Request, res: Response) => {
   for (let cont = 0; cont < veicleInfoModfi.length; cont++) {
     if (
       veicleInfoModfi[cont] !== "name" &&
+      veicleInfoModfi[cont] !== "plate" &&
       veicleInfoModfi[cont] !== "description" &&
       veicleInfoModfi[cont] !== "isFavorite" &&
       veicleInfoModfi[cont] !== "year" &&
@@ -40,12 +41,18 @@ const updateVeicle = async (req: Request, res: Response) => {
       modifiVeicle[veicleInfoModfi[cont]] = bodyModif[veicleInfoModfi[cont]];
   }
 
-  const isModificate = await new veicleRepoitory().updateVeicle(
-    idVerify,
-    modifiVeicle
+  await new veicleRepoitory().updateVeicle(
+    idVerify.id,
+    modifiVeicle.name,
+    modifiVeicle.description,
+    modifiVeicle.plate,
+    modifiVeicle.isFavorite,
+    modifiVeicle.year,
+    modifiVeicle.color,
+    modifiVeicle.price,
+    modifiVeicle.createdAt
   );
-
-  return res.status(200).json({ msg: "veicle is modificated", isModificate });
+  return res.status(200).json({ msg: "veicle is modificated", modifiVeicle });
 };
 
 export default updateVeicle;
