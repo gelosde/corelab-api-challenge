@@ -41,17 +41,7 @@ const updateVeicle = async (req: Request, res: Response) => {
       modifiVeicle[veicleInfoModfi[cont]] = bodyModif[veicleInfoModfi[cont]];
   }
 
-  await new veicleRepoitory().updateVeicle(
-    idVerify.id,
-    modifiVeicle.name,
-    modifiVeicle.description,
-    modifiVeicle.plate,
-    modifiVeicle.isFavorite,
-    modifiVeicle.year,
-    modifiVeicle.color,
-    modifiVeicle.price,
-    modifiVeicle.createdAt
-  );
+  await new veicleRepoitory().updateVeicle(idVerify.id, modifiVeicle);
   return res.status(200).json({ msg: "veicle is modificated", modifiVeicle });
 };
 

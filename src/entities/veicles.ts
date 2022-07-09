@@ -24,7 +24,7 @@ export class veicleTable {
   @Column({ type: "date" })
   year: string;
 
-  @Column()
+  @Column({ type: "float" })
   price: number;
 
   @Column({ type: "date" })
