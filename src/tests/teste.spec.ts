@@ -56,20 +56,4 @@ describe("tests for routes off veicle tratament", () => {
       expect(updateVeicle.status).toBe(200);
     } catch (err) {}
   });
-
-  it("this test is to create one arquive with all veicles ", async () => {
-    try {
-      const getArquive = await request(app).get(`/veicle/download/${seecar}`);
-      drop = getArquive;
-      expect(getArquive.status).toBe(200);
-    } catch (err) {}
-  });
-
-  it("this test is to delet one arquive", async () => {
-    try {
-      const deleteArquive = await request(app).delete(`/arquive/${seecar}`);
-      drop = deleteArquive;
-      expect(deleteArquive.status).toBe(200);
-    } catch (err) {}
-  });
 });
