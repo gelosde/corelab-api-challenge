@@ -28,8 +28,8 @@ class veicleRepoitory implements IveiclesRepo {
       isFavorite: modifiVeicle.isFavorite,
       year: modifiVeicle.year,
       color: modifiVeicle.color,
-      price: modifiVeicle.price,
-      createdAt: modifiVeicle.createdAt,
+      price_max: modifiVeicle.price_max,
+      price_min: modifiVeicle.price_min,
     });
 
   deleteVeicle = async (id: string) =>

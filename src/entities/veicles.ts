@@ -25,10 +25,10 @@ export class veicleTable {
   year: string;
 
   @Column({ type: "float" })
-  price: number;
+  price_max: number;
 
-  @Column({ type: "date" })
-  createdAt: string;
+  @Column({ type: "float" })
+  price_min: number;
   constructor() {
     if (!this.id) {
       this.id = uuid();

@@ -15,9 +15,9 @@ const schema = yup.object().shape({
 
   color: yup.string().required(),
 
-  price: yup.number().required(),
+  price_max: yup.number().required(),
 
-  createdAt: yup.string().required(),
+  price_min: yup.number().required(),
 });
 
 export default schema;

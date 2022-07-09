@@ -31,8 +31,8 @@ const updateVeicle = async (req: Request, res: Response) => {
       veicleInfoModfi[cont] !== "isFavorite" &&
       veicleInfoModfi[cont] !== "year" &&
       veicleInfoModfi[cont] !== "color" &&
-      veicleInfoModfi[cont] !== "price" &&
-      veicleInfoModfi[cont] !== "createdAt"
+      veicleInfoModfi[cont] !== "price_max" &&
+      veicleInfoModfi[cont] !== "price_min"
     ) {
       return res
         .status(203)
@@ -40,8 +40,12 @@ const updateVeicle = async (req: Request, res: Response) => {
     } else
       modifiVeicle[veicleInfoModfi[cont]] = bodyModif[veicleInfoModfi[cont]];
   }
+  if (bodyModif["price_max"] <= bodyModif["price_min"]) {
+    return res
+      .status(400)
+      .json({ msg: " maximun price have to be more than price min" });
+  } else await new veicleRepoitory().updateVeicle(idVerify.id, modifiVeicle);
 
-  await new veicleRepoitory().updateVeicle(idVerify.id, modifiVeicle);
   return res.status(200).json({ msg: "veicle is modificated", modifiVeicle });
 };
 

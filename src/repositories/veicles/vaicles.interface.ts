@@ -8,8 +8,8 @@ interface Iveicles {
   isFavorite: boolean;
   year: string;
   color: string;
-  price: number;
-  createdAt: string;
+  price_min: number;
+  price_max: number;
 }
 
 interface IveiclesRepo {
