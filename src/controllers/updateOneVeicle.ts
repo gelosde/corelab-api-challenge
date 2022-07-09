@@ -4,49 +4,47 @@ import veicleRepoitory from "../repositories/veicles/viecles.repository";
 const updateVeicle = async (req: Request, res: Response) => {
   const id = req.params.id;
 
-  const bodyModif = req.body;
+  const bodyModif = req.validated;
 
-  const idVerify = await new veicleRepoitory().getOneVeicle(id);
-  if (req.body.plate) {
-    const findPlate = await new veicleRepoitory().getOneVeiclePlate(
-      req.body.plate
-    );
-    if (findPlate) {
-      return res.status(203).json({ msg: "this plate alread is taken" });
-    }
-  }
+  let msg: any;
+
+  const Verify = await new veicleRepoitory().getallVeicle();
+
+  const idVerify = Verify.find((item) => item.id === id);
+
   if (!idVerify) {
-    return res.status(404).json({ smg: "veicle not found" });
+    msg = res.status(404).json({ smg: "veicle not found" });
+  }
+
+  if (req.validated.plate) {
+    const findPlate = await new veicleRepoitory().getOneVeiclePlate(
+      req.validated.plate
+    );
+
+    if (findPlate && !msg) {
+      msg = res.status(203).json({ msg: "this plate alread is taken" });
+    }
   }
 
   let modifiVeicle = idVerify;
 
   const veicleInfoModfi = Object.keys(bodyModif);
-
-  for (let cont = 0; cont < veicleInfoModfi.length; cont++) {
-    if (
-      veicleInfoModfi[cont] !== "name" &&
-      veicleInfoModfi[cont] !== "plate" &&
-      veicleInfoModfi[cont] !== "description" &&
-      veicleInfoModfi[cont] !== "isFavorite" &&
-      veicleInfoModfi[cont] !== "year" &&
-      veicleInfoModfi[cont] !== "color" &&
-      veicleInfoModfi[cont] !== "price_max" &&
-      veicleInfoModfi[cont] !== "price_min"
-    ) {
-      return res
-        .status(203)
-        .json({ msg: `the element ${veicleInfoModfi[cont]} is not suported` });
-    } else
+  if (!msg) {
+    for (let cont = 0; cont < veicleInfoModfi.length; cont++) {
       modifiVeicle[veicleInfoModfi[cont]] = bodyModif[veicleInfoModfi[cont]];
+    }
+    if (bodyModif["price_max"] <= bodyModif["price_min"] && !msg) {
+      msg = res
+        .status(400)
+        .json({ msg: " maximun price have to be more than price min" });
+    } else if (!msg) {
+      await new veicleRepoitory().updateVeicle(idVerify.id, modifiVeicle);
+      msg = res
+        .status(200)
+        .json({ msg: "veicle is modificated", modifiVeicle });
+    }
   }
-  if (bodyModif["price_max"] <= bodyModif["price_min"]) {
-    return res
-      .status(400)
-      .json({ msg: " maximun price have to be more than price min" });
-  } else await new veicleRepoitory().updateVeicle(idVerify.id, modifiVeicle);
-
-  return res.status(200).json({ msg: "veicle is modificated", modifiVeicle });
+  return msg;
 };
 
 export default updateVeicle;

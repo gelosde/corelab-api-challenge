@@ -3,10 +3,13 @@ import veicleRepoitory from "../repositories/veicles/viecles.repository";
 
 const registerVeicle = async (req: Request, res: Response) => {
   const veicle = req.validated;
+
   let msg: Response<any, Record<string, any>>;
+
   const validatePlate = await new veicleRepoitory().getOneVeiclePlate(
     veicle.plate
   );
+
   if (validatePlate) {
     msg = res.status(409).json({ msg: "plate is already taken" });
   } else if (veicle["price_max"] <= veicle["price_min"]) {
