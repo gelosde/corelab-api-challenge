@@ -1,14 +1,15 @@
 import { DeleteResult } from "typeorm";
 
 interface Iveicles {
+  id?: string;
   name: string;
   description: string;
   plate: string;
   isFavorite: boolean;
-  year: number;
+  year: string;
   color: string;
   price: number;
-  createdAt: Date;
+  createdAt: string;
 }
 
 interface IveiclesRepo {
@@ -17,4 +18,4 @@ interface IveiclesRepo {
   deleteVeicle: (veicleId: string) => Promise<DeleteResult>;
 }
 
-export { IveiclesRepo };
+export { IveiclesRepo, Iveicles };

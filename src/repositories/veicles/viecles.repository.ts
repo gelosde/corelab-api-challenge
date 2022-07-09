@@ -1,6 +1,6 @@
 import { getRepository, Repository } from "typeorm";
 import { veicleTable } from "../../entities/veicles";
-import { IveiclesRepo } from "./vaicles.interface";
+import { IveiclesRepo, Iveicles } from "./vaicles.interface";
 
 class veicleRepoitory implements IveiclesRepo {
   private ormrepository: Repository<veicleTable>;
@@ -9,7 +9,8 @@ class veicleRepoitory implements IveiclesRepo {
     this.ormrepository = getRepository(veicleTable);
   }
 
-  saveVeicle = async (veicle: any) => await this.ormrepository.save(veicle);
+  saveVeicle = async (veicle: Iveicles) =>
+    await this.ormrepository.save(veicle);
 
   getOneVeiclePlate = async (plate: string) =>
     await this.ormrepository.findOne({ plate: plate });
@@ -19,7 +20,7 @@ class veicleRepoitory implements IveiclesRepo {
 
   getallVeicle = async () => await this.ormrepository.find();
 
-  updateVeicle = async (veicleInitStatus: string, modifiVeicle: any) =>
+  updateVeicle = async (veicleInitStatus: string, modifiVeicle: Iveicles) =>
     await this.ormrepository.update(veicleInitStatus, {
       name: modifiVeicle.name,
       description: modifiVeicle.description,
