@@ -23,11 +23,11 @@
 
 ### Opção 1
 
-yarn
+> yarn
 
 ### Opção 2
 
-npm install
+> npm install
 
 # Rotas
 
@@ -36,88 +36,79 @@ npm install
 ### Registrar um carro: http://localhost:3000/veicle/register
 
 1. Corpo da requisição:
->   {
->   name: "impala",
->   description: "One good car",
->   plate: "AB3e33",
->   isFavorite: true,
->   color: "black",
->   price_min: 19999.98,
->   price_max: 811111.66,
->   year: "07/11/1998",
->   };
+   {
+<p>    name: "impala",
+<p>    description: "One good car",
+<p>    plate: "AB3e33",
+<p>    isFavorite: true,
+<p>    color: "black",
+<p>    price_min: 19999.98,
+<p>   price_max: 811111.66,
+<p>   year: "07/11/1998",
+<p>   };
 
 2. Resposta e status code 201:
-   {
-   id:"xxxxxxxxxxxx"
-   name: "impala",
-   description: "One good car",
-   plate: "AB3e33",
-   isFavorite: true,
-   color: "black",
-   price_min: 19999.98,
-   price_max: 811111.66,
-   year: "07/11/1998",
-   };
+<p>    {
+<p>    id:"xxxxxxxxxxxx"
+<p>    name: "impala",
+<p>    description: "One good car",
+<p>    plate: "AB3e33",
+<p>    isFavorite: true,
+<p>    color: "black",
+<p>    price_min: 19999.98,
+<p>    price_max: 811111.66,
+<p>    year: "07/11/1998",
+<p>    };
 
 ## Metodo Get:
 
 ### Pegar um carro pela id: http://localhost:3000/veicle/see/:id_carro
 
 1. Resposta e status code 302:
-   {
-   id:"id_carro"
-   name: "xxxxx",
-   description: "xxxxxxxxxxxxxxxx",
-   plate: "xxxxxx",
-   isFavorite: true,
-   color: "xxxxx",
-   price_min: xxxxx.xx,
-   price_max: xxxxxx.xx,
-   year: "xx/xx/xxxx",
-   };
+<br/>  {
+<br/> id:"id_carro"
+<br/> name: "xxxxx",
+<br/> description: "xxxxxxxxxxxxxxxx",
+<br/> plate: "xxxxxx",
+<br/>  isFavorite: true,
+<br/>  color: "xxxxx",
+<br/>  price_min: xxxxx.xx,
+<br/>  price_max: xxxxxx.xx,
+<br/>  year: "xx/xx/xxxx",
+<br/>    };
 
 ### Listar todos os carros: http://localhost:3000/veicle/list
 
 1. Resposta array com lista de carros e status code 200
-   [ {
-   id:"xxxxxxxxxx"
-   name: "xxxxx",
-   description: "xxxxxxxxxxxxxxxx",
-   plate: "xxxxxx",
-   isFavorite: true,
-   color: "xxxxx",
-   price_min: xxxxx.xx,
-   price_max: xxxxxx.xx,
-   year: "xx/xx/xxxx",
-   }, id:"xxxxxxxxxx"
-   name: "xxxxx",
-   description: "xxxxxxxxxxxxxxxx",
-   plate: "xxxxxx",
-   isFavorite: true,
-   color: "xxxxx",
-   price_min: xxxxx.xx,
-   price_max: xxxxxx.xx,
-   year: "xx/xx/xxxx",
-   }, id:"xxxxxxxxxx"
-   name: "xxxxx",
-   description: "xxxxxxxxxxxxxxxx",
-   plate: "xxxxxx",
-   isFavorite: true,
-   color: "xxxxx",
-   price_min: xxxxx.xx,
-   price_max: xxxxxx.xx,
-   year: "xx/xx/xxxx",
-   }, id:"xxxxxxxxxx"
-   name: "xxxxx",
-   description: "xxxxxxxxxxxxxxxx",
-   plate: "xxxxxx",
-   isFavorite: true,
-   color: "xxxxx",
-   price_min: xxxxx.xx,
-   price_max: xxxxxx.xx,
-   year: "xx/xx/xxxx",
-   },]
+<br/>  [ {
+<br/>  id:"xxxxxxxxxx"
+<br/>  name: "xxxxx",
+<br/>  description: "xxxxxxxxxxxxxxxx",
+<br/>    plate: "xxxxxx",
+<br/>    isFavorite: true,
+<br/>    color: "xxxxx",
+<br/>    price_min: xxxxx.xx,
+<br/>    price_max: xxxxxx.xx,
+<br/>    year: "xx/xx/xxxx",
+<br/>    }, id:"xxxxxxxxxx"
+<br/>   name: "xxxxx",
+<br/>   description: "xxxxxxxxxxxxxxxx",
+<br/>   plate: "xxxxxx",
+<br/>   isFavorite: true,
+<br/>   color: "xxxxx",
+<br/>   price_min: xxxxx.xx,
+<br/>   price_max: xxxxxx.xx,
+<br/>   year: "xx/xx/xxxx",
+<br/>   }, id:"xxxxxxxxxx"
+<br/>   name: "xxxxx",
+<br/>   description: "xxxxxxxxxxxxxxxx",
+<br/>   plate: "xxxxxx",
+<br/>   isFavorite: true,
+<br/>   color: "xxxxx",
+<br/>   price_min: xxxxx.xx,
+<br/>   price_max: xxxxxx.xx,
+<br/>   year: "xx/xx/xxxx",
+<br/>   },]
 
 ## Metodo Patch:
 
@@ -127,46 +118,45 @@ Pode se colocar uma ou todas as informaçoes para atualizar menos a id do carro:
 
 ex :
 
-versão antiga:
+<br/>versão antiga:
 
-{
-id:"xxxxxxxxxx"
-name: "xxxxx",
-description: "xxxxxxxxxxxxxxxx",
-plate: "xxxxxx",
-isFavorite: true,
-color: "xxxxx",
-price_min: xxxxx.xx,
-price_max: xxxxxx.xx,
-year: "xx/xx/xxxx",
-}
+<br/>{
+<br/>id:"xxxxxxxxxx"
+<br/>name: "xxxxx",
+<br/>description: "xxxxxxxxxxxxxxxx",
+<br/>plate: "xxxxxx",
+<br/>isFavorite: true,
+<br/>color: "xxxxx",
+<br/>price_min: xxxxx.xx,
+<br/>price_max: xxxxxx.xx,
+<br/>year: "xx/xx/xxxx",
+<br/>}
 
-tentativa de atualizar usando a id correta e modificando a id:
+<br/>tentativa de atualizar usando a id correta e modificando a id:
+<br/>{
+<br/>id:"yyyyyyyyy"
+<br/>name: "yyyyyy",
+<br/>description: "yyyyyyyyyyyyyyyy",
+<br/>plate: "yyyyyy",
+<br/>isFavorite: false,
+<br/>color: "yyyyyyyy",
+<br/>price_min: yyyyyy.yy,
+<br/>price_max: yyyyy.yy,
+<br/>year: "yy/yy/yyyy",
+<br/>}
+<br/>Resposta e status code 200:
 
-{
-id:"yyyyyyyyy"
-name: "yyyyyy",
-description: "yyyyyyyyyyyyyyyy",
-plate: "yyyyyy",
-isFavorite: false,
-color: "yyyyyyyy",
-price_min: yyyyyy.yy,
-price_max: yyyyy.yy,
-year: "yy/yy/yyyy",
-}
-Resposta e status code 200:
-
-{
-id:"xxxxxxxxxx"
-name: "yyyyyy",
-description: "yyyyyyyyyyyyyyyy",
-plate: "yyyyyy",
-isFavorite: false,
-color: "yyyyyyyy",
-price_min: yyyyyy.yy,
-price_max: yyyyy.yy,
-year: "yy/yy/yyyy",
-}
+<br/>{
+<br/>id:"xxxxxxxxxx"
+<br/>name: "yyyyyy",
+<br/>description: "yyyyyyyyyyyyyyyy",
+<br/>plate: "yyyyyy",
+<br/>isFavorite: false,
+<br/>color: "yyyyyyyy",
+<br/>price_min: yyyyyy.yy,
+<br/>price_max: yyyyy.yy,
+<br/>year: "yy/yy/yyyy",
+<br/>}
 
 ## Metodo Delet:
 
@@ -174,14 +164,14 @@ year: "yy/yy/yyyy",
 
 Resposta e status code 200:
 
-{
-id:"xxxxxxxxxx"
-name: "xxxxx",
-description: "xxxxxxxxxxxxxxxx",
-plate: "xxxxxx",
-isFavorite: true,
-color: "xxxxx",
-price_min: xxxxx.xx,
-price_max: xxxxxx.xx,
-year: "xx/xx/xxxx",
-}
+<br/>{
+<br/>id:"xxxxxxxxxx"
+<br/>name: "xxxxx",
+<br/>description: "xxxxxxxxxxxxxxxx",
+<br/>plate: "xxxxxx",
+<br/>isFavorite: true,
+<br/>color: "xxxxx",
+<br/>price_min: xxxxx.xx,
+<br/>price_max: xxxxxx.xx,
+<br/>year: "xx/xx/xxxx",
+<br/>}
