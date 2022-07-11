@@ -35,17 +35,17 @@ npm install
 
 ### Registrar um carro: http://localhost:3000/veicle/register
 
-1. Corpo da requisição
-   {
-   name: "impala",
-   description: "One good car",
-   plate: "AB3e33",
-   isFavorite: true,
-   color: "black",
-   price_min: 19999.98,
-   price_max: 811111.66,
-   year: "07/11/1998",
-   };
+1. Corpo da requisição:
+>   {
+>   name: "impala",
+>   description: "One good car",
+>   plate: "AB3e33",
+>   isFavorite: true,
+>   color: "black",
+>   price_min: 19999.98,
+>   price_max: 811111.66,
+>   year: "07/11/1998",
+>   };
 
 2. Resposta e status code 201:
    {
